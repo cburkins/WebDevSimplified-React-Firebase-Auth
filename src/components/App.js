@@ -12,7 +12,7 @@ import PrivatePage from "./PrivatePage";
 import PublicPage from "./PublicPage";
 import HomePage from "./HomePage";
 import { AuthContextConsumer } from "../contexts/AuthContext";
-import { UserInfoPage } from "./UserInfoPage";
+import UserInfoPage from "./UserInfoPage";
 
 function App(props) {
     return (
