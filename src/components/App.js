@@ -12,6 +12,7 @@ import PrivatePage from "./PrivatePage";
 import PublicPage from "./PublicPage";
 import HomePage from "./HomePage";
 import { AuthContextConsumer } from "../contexts/AuthContext";
+import { UserInfoPage } from "./UserInfoPage";
 
 function App(props) {
     return (
@@ -37,6 +38,9 @@ function App(props) {
                                         </Nav.Link>
                                         <Nav.Link as={Link} to="/privatepage02">
                                             PrivatePage02
+                                        </Nav.Link>
+                                        <Nav.Link as={Link} to="/userinfo">
+                                            UserInfo
                                         </Nav.Link>
                                     </Nav>
                                     {/* 2nd Nav item, gets pushed to right because of mr-auto on first item */}
@@ -69,6 +73,7 @@ function App(props) {
                                     <Route path="/signup" component={SignupPage} />
                                     <Route path="/login" component={LoginPage} />
                                     <Route path="/forgot-password" component={ForgotPassword} />
+                                    <PrivateRoute path="/userinfo" render={() => <UserInfoPage />}></PrivateRoute>
                                     {/* Define the DEFAULT route when no path to a dashboard is given */}
                                     <Route path="/" render={() => <Redirect to="/home" />} />
                                 </Switch>
