@@ -8,12 +8,13 @@ import SignupPage from "./SignupPage";
 import UpdateProfilePage from "./UpdateProfilePage";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
+import PrivatePage from "./PrivatePage";
 
 function App() {
     return (
         <div>
             <Router>
-                <Navbar bg="light">
+                <Navbar bg="light" className="mb-3">
                     {/* 1st Nav item with className mr-auto pushes the 2nd Nav item to the right */}
                     <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/">
@@ -35,6 +36,8 @@ function App() {
                     <Switch>
                         <PrivateRoute exact path="/" component={Dashboard} />
                         <PrivateRoute path="/update-profile" component={UpdateProfilePage} />
+                        <PrivateRoute path="/privatepage01" component={PrivatePage} />
+                        <PrivateRoute path="/privatepage02" component={PrivatePage} />
                         <Route path="/signup" component={SignupPage} />
                         <Route path="/login" component={LoginPage} />
                         <Route path="/forgot-password" component={ForgotPassword} />
