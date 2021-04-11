@@ -18,12 +18,12 @@ export default function Login() {
             setError("");
             setLoading(true);
             await login(emailRef.current.value, passwordRef.current.value);
-            history.push("/");
+            setLoading(false);
+            history.push("/home");
         } catch {
+            setLoading(false);
             setError("Failed to log in");
         }
-
-        setLoading(false);
     }
 
     return (
