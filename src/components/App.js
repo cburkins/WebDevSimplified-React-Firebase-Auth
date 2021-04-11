@@ -1,14 +1,13 @@
 import React from "react";
-import Signup from "./Signup";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { AuthProvider } from "../contexts/AuthContext";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import Login from "./Login";
 import LoginPage from "./LoginPage";
+import SignupPage from "./SignupPage";
+import UpdateProfilePage from "./UpdateProfilePage";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
-import UpdateProfile from "./UpdateProfile";
 
 function App() {
     return (
@@ -35,8 +34,8 @@ function App() {
                 <AuthProvider>
                     <Switch>
                         <PrivateRoute exact path="/" component={Dashboard} />
-                        <PrivateRoute path="/update-profile" component={UpdateProfile} />
-                        <Route path="/signup" component={Signup} />
+                        <PrivateRoute path="/update-profile" component={UpdateProfilePage} />
+                        <Route path="/signup" component={SignupPage} />
                         <Route path="/login" component={LoginPage} />
                         <Route path="/forgot-password" component={ForgotPassword} />
                     </Switch>
