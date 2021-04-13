@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { projectFirestore } from "../firebase";
 
+// This is a React Custom Hook (as it's name starts with "use")
+
 const useUserRoleList = (collection) => {
     const [docs, setDocs] = useState([]);
 
@@ -20,14 +22,17 @@ const useUserRoleList = (collection) => {
                 },
                 (error) => {
                     console.warn("Got error from Firestore call in useUserRoleList:", error.name, error.code);
+
+                    // update our own local state within this React Custom Hook
                     setDocs([]);
                 }
             );
 
-        // return a cleanup function
+        // return a cleanup function which gets called automatically when needed
         return () => unsub;
     }, [collection]);
 
+    // Return a useState variable to caller
     return docs;
 };
 
