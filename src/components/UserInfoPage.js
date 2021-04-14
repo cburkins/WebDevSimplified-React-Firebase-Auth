@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import ReactJson from "react-json-view";
 import { AuthContext } from "../contexts/AuthContext";
-import useUserRoleList from "../hooks/useUserRoleList";
+import useUserRoleByUID from "../hooks/useUserRoleByUID";
 
 const UserInfoPage = (props) => {
     let authContext = useContext(AuthContext);
-    const usermeta = useUserRoleList("users");
 
     let [userInfo, setUserInfo] = useState(null);
+    let userRole = useUserRoleByUID(userInfo?.uid, userInfo?.email);
 
     // Get the current user and record into our state
     useEffect(() => {
@@ -26,7 +26,7 @@ const UserInfoPage = (props) => {
             <br />
             <h2>UserMeta (Roles)</h2>
             <div>
-                <ReactJson src={usermeta} collapsed="2" />
+                <ReactJson src={userRole} collapsed="2" />
             </div>
             <br />
             <h2>Entire User Info Object</h2>
