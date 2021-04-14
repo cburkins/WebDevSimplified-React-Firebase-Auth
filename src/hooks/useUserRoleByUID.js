@@ -5,8 +5,10 @@ import { projectFirestore } from "../firebase";
 
 const useUserRoleByUID = (UID, email) => {
     const [userRole, setUserRole] = useState([]);
+    console.log(`Running hook useUserRoleByUID: (UID=${UID}, email=${email}`);
 
     useEffect(() => {
+        console.log("   Running useEffect() hook within useUserRoleByUID");
         if ((UID, email)) {
             // Get firestore reference to document named by users UID
             var firebaseDocRef = projectFirestore.collection("users").doc(UID);
@@ -15,11 +17,11 @@ const useUserRoleByUID = (UID, email) => {
                 .get()
                 .then((doc) => {
                     if (doc.exists) {
-                        console.log("Document data:", doc.data());
+                        console.log("   User already has role doc:", doc.data());
                         setUserRole(doc);
                     } else {
                         // doc.data() will be undefined in this case
-                        console.log(`No such document for UID=${UID}`);
+                        console.log(`   No such document for UID=${UID}`);
                         if (UID.length > 10) {
                             // Write a doc
                             console.log(`Creating a userrole doc for UID=${UID}`);
@@ -31,12 +33,12 @@ const useUserRoleByUID = (UID, email) => {
                     }
                 })
                 .catch((error) => {
-                    console.log("Error getting document:", error);
+                    console.log("   Error getting role document:", error);
                 });
         }
         // return a cleanup function which gets called automatically when needed
         // return () => unsub;
-    }, [UID]);
+    }, [UID, email]);
 
     // Return a useState variable to caller
     return userRole;

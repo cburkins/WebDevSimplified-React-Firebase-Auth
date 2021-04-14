@@ -7,11 +7,13 @@ const UserInfoPage = (props) => {
     let authContext = useContext(AuthContext);
 
     let [userInfo, setUserInfo] = useState(null);
+    // React Custom Hook will attempt to get/create user role record each time userInfo udpates
     let userRole = useUserRoleByUID(userInfo?.uid, userInfo?.email);
 
     // Get the current user and record into our state
     useEffect(() => {
         let currentUser = authContext.currentUser;
+        console.log("Setting userInfo to:", currentUser);
         setUserInfo(currentUser);
     }, [authContext]);
 
