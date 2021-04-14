@@ -14,7 +14,7 @@ Added the following:
 
 ![image](https://user-images.githubusercontent.com/9342308/114705267-8c517000-9cf5-11eb-87ee-944490cb5d0a.png)
 
-# Deployment
+# Deployment (Local Hosting & Remote Firestore)
 
 1. Create Firebase Project
 1. Create Firebase Web App
